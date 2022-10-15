@@ -1,0 +1,26 @@
+{
+  "name": "make-your-drink---backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabeMoreira/Make-Your-Drink---Backend.git"
+  },
+  "author": "Gabriel Moreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabeMoreira/Make-Your-Drink---Backend/issues"
+  },
+  "homepage": "https://github.com/gabeMoreira/Make-Your-Drink---Backend#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
