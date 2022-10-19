@@ -19,7 +19,8 @@ userRouter.route('/')
     .post((req, res) => {
         userController.createUsers(req, res)
         .then((data) => {
-            res.status(201).send({message: 'User created', data: data})
+            if(data.status) res.status(201).send({message: 'User created', data: data.data})
+            else res.status(400).send({message: 'ERROR_FORM', data: data.data})
         })
         .catch((error) => {
             res.send({message: error})
