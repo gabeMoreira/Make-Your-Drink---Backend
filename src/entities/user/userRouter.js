@@ -8,8 +8,8 @@ userRouter.route('/')
     .get((req, res) => {
         userController.getUsers(req, res)
         .then((data) => {
-            if (data) res.status(200).send({message: data})
-            res.status(200).send({message: 'Nenhum dado encontrado'})
+            if (data.length > 0) res.status(200).send({data: data})
+            else res.status(200).send({message: 'Nenhum dado encontrado'})
         })
         .catch((error) => {
             res.status(200).send({error: error})
@@ -17,7 +17,13 @@ userRouter.route('/')
         
     })
     .post((req, res) => {
-        res.status(200).send({message: 'Rota de POST criada com sucesso'})
+        userController.createUsers(req, res)
+        .then((data) => {
+            res.status(201).send({message: 'User created', data: data})
+        })
+        .catch((error) => {
+            res.send({message: error})
+        })
     })
     .put((req, res) => {
         res.status(200).send({message: 'Rota de PUT criada com sucesso'})
