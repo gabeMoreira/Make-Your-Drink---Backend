@@ -7,7 +7,6 @@ export const getUsers = async (req, res) => {
 }
 
 export const createUsers = async (req, res) => {
-    console.log('CHEGOUU')
     const { name, email, password} = req.body
 
     const hashPassowrd = await bcrypt.hash(password, 10)
@@ -18,7 +17,6 @@ export const createUsers = async (req, res) => {
         password: hashPassowrd
     })
     const insertUser = await userModel.create(user)
-    console.log(insertUser)
     return insertUser
 }
 
