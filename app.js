@@ -1,19 +1,23 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
-
+import userRouter from './src/entities/user/userRouter.js'
 const app = express()
 
+//Application config
 dotenv.config()
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.status(200).send({message: 'Rota criada com sucesso'})
+    res.status(200).send({message: 'default route'})
 })
 
+//Application routes
+app.use('/users', userRouter)
+
 mongoose
-.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gwpmc.mongodb.net/?retryWrites=true&w=majority`)
+.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_STRING}`)
 .then(() => {
     console.log('Mongo connection started...')
     app.listen(process.env.PORT, () => {
