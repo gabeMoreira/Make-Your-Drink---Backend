@@ -47,8 +47,15 @@ userRouter.route('/:id').put((req, res) => {
         })
 })
 
-userRouter.route('/').delete((req, res) => {
-    res.status(200).send({ message: 'Rota de DELETE criada com sucesso' })
+userRouter.route('/:id').delete((req, res) => {
+    userController.deleteUsers(req, res)
+        .then((data) => {
+            if (data && data != undefined) {
+                if (data.deletedCount == 1) res.status(200).send({ message: 'Usuário deletado com sucesso' })
+                else res.status(400).send({ message: 'Usuário não encontrado' }) 
+            } 
+            else res.status(400).send({ message: 'Usuário não encontrado' })
+        })
 })
 
 export default userRouter

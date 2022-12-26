@@ -67,4 +67,16 @@ export const updateUser = async (req, res) => {
 
 }
 
+export const deleteUsers = async (req, res) => {
+    const { id } = req.params
+    try {
+        const deleteUser = await userModel.deleteOne({ _id: id })
+        return deleteUser
+    }
+    catch (error) {
+        return
+    }
+
+}
+
 
