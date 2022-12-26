@@ -29,7 +29,6 @@ Router.route('/').post( async (req, res) => {
         token: token
     })
 
-
 })
 
 export default Router

@@ -2,8 +2,6 @@ import express from 'express'
 const userRouter = express.Router()
 import * as userController from './userController.js'
 
-
-
 userRouter.route('/').get((req, res) => {
     userController.getUsers(req, res)
         .then((data) => {

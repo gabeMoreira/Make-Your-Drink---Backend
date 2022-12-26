@@ -28,3 +28,6 @@ mongoose
             console.log(`Server on at port ${process.env.PORT}`)
         })
     })
+    .catch(() => {
+        console.log('Server não foi iniciado devido a um erro no mongo')
+    })
