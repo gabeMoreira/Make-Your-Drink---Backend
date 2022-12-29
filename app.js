@@ -6,6 +6,7 @@ import productRouter from './src/entities/product/productRouter.js'
 import recipeRouter from './src/entities/recipe/recipeRouter.js'
 import loginRouter from './src/routes/login.js'
 import middleware from './src/middlewares/authentication.js'
+import getRecipesRouter from './src/routes/findRecipes.js'
 const app = express()
 
 //Application config
@@ -23,6 +24,7 @@ app.use('/users', userRouter)
 app.use('/login', loginRouter)
 app.use('/products', productRouter)
 app.use('/recipes', recipeRouter)
+app.use('/find-recipes', getRecipesRouter)
 mongoose
     .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_STRING}`)
     .then(() => {
