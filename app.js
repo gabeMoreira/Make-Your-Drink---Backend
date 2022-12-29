@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import userRouter from './src/entities/user/userRouter.js'
 import productRouter from './src/entities/product/productRouter.js'
+import recipeRouter from './src/entities/recipe/recipeRouter.js'
 import loginRouter from './src/routes/login.js'
 import middleware from './src/middlewares/authentication.js'
 const app = express()
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/users', userRouter)
 app.use('/login', loginRouter)
 app.use('/products', productRouter)
-
+app.use('/recipes', recipeRouter)
 mongoose
     .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_STRING}`)
     .then(() => {

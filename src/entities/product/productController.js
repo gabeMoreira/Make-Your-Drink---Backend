@@ -59,7 +59,7 @@ export const updateProduct = async (req, res) => {
     }
     try {
         const updateProduct = await productModel.findByIdAndUpdate({ _id: id }, product)
-        return product
+        return updateProduct
     } catch (err) {
         return
     }
