@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
 import userRouter from './src/entities/user/userRouter.js'
 import productRouter from './src/entities/product/productRouter.js'
 import recipeRouter from './src/entities/recipe/recipeRouter.js'
@@ -14,7 +15,7 @@ dotenv.config()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(middleware)
-
+app.use(cors())
 app.get('/', (req, res) => {
     res.status(200).send({ message: 'default route' })
 })

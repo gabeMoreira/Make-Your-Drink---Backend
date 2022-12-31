@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export const authMiddleware = async (req, res, next) => {
 
-    if (req.path === '/login') return next()
+    if (req.path === '/login' || '/users') return next()
 
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
